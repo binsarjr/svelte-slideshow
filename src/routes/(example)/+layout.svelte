@@ -3,6 +3,12 @@
 	import 'reveal.js/dist/theme/black.css';
 </script>
 
-<div style="height: 100vh;">
+<div>
 	<slot />
 </div>
+
+<style>
+    div {
+        height: 100vh;
+    }
+</style>
