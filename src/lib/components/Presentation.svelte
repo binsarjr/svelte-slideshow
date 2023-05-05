@@ -1,6 +1,4 @@
 <script lang="ts">
-	import 'reveal.js/dist/reveal.css';
-	import 'reveal.js/dist/theme/black.css';
 	import { onMount } from 'svelte';
 	import type Reveal from 'reveal.js';
 
@@ -11,22 +9,32 @@
 	let el: HTMLDivElement;
 	let RevealJs: Reveal.Api;
 	let api: Reveal.Api;
-	
-	// wait if config is change
-	$: if (config && typeof window != 'undefined' && api) {
-		api.destroy();
-		init();
+
+	// if in vite
+	try {
+		if (import.meta.hot) {
+			import.meta.hot.on('vite:afterUpdate', () => {
+				reInit();
+			});
+		}
+	} catch (error) {
+		console.warn(error, 'nevermind');
 	}
+
+	// wait if config is change
+	$: if (config && typeof window != 'undefined' && api) reInit();
 
 	const init = () => {
 		// if config is empty then config value have to be undefined
-		if(config)
-			if(!Object.keys(config).length)
-				config=undefined
+		if (config) if (!Object.keys(config).length) config = undefined;
 
 		// @ts-ignore
 		api = new RevealJs(el, config);
 		api.initialize();
+	};
+	const reInit = () => {
+		api.destroy();
+		init();
 	};
 	onMount(async () => {
 		RevealJs = (await import('reveal.js')).default;
