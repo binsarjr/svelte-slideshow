@@ -9,12 +9,28 @@
 	export let width = '100%';
 
 	let el: HTMLDivElement;
+	let RevealJs: Reveal.Api;
 	let api: Reveal.Api;
-	onMount(async () => {
-		const RevealJs = (await import('reveal.js')).default;
+	
+	// wait if config is change
+	$: if (config && typeof window != 'undefined' && api) {
+		api.destroy();
+		init();
+	}
+
+	const init = () => {
+		// if config is empty then config value have to be undefined
+		if(config)
+			if(!Object.keys(config).length)
+				config=undefined
+
 		// @ts-ignore
 		api = new RevealJs(el, config);
 		api.initialize();
+	};
+	onMount(async () => {
+		RevealJs = (await import('reveal.js')).default;
+		init();
 	});
 </script>
 
