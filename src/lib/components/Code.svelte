@@ -5,12 +5,8 @@
 	export let lineStartFrom = false;
 </script>
 
-<pre>
-	<code
+<pre><code
 		data-trim={trim}
 		data-noescape={noescape}
 		data-line-numbers={lineNumbers}
-		data-ln-start-from={lineStartFrom}>
-		<slot />
-	</code>
-</pre>
+		data-ln-start-from={lineStartFrom}><slot /></code></pre>
