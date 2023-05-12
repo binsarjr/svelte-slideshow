@@ -15,7 +15,6 @@
 	import Presentation from '../../../lib/components/Presentation.svelte';
 	import { onMount } from 'svelte';
 	import Slide from '../../../lib/components/Slide.svelte';
-	import SlideMarkdown from '../../../lib/components/SlideMarkdown.svelte';
 	let config: Reveal.Options = {};
 	
 
@@ -30,7 +29,6 @@
 		config = {
 			plugins: [Highlight, RevealNotes, Markdown, MathReveal],
 			hash: true,
-			embedded: true,
 			mathjax2: {
 				config: 'TeX-AMS_HTML-full',
 				// @ts-ignore
@@ -54,7 +52,7 @@
 			>
 		</p>
 	</Slide>
-	<SlideMarkdown>
+	<Slide markdown>
 		<script type="text/template">
 ## Slide 1
 A paragraph with some text and a [link](https://hakim.se).
@@ -63,7 +61,7 @@ A paragraph with some text and a [link](https://hakim.se).
 ---
 ## Slide 3
 		</script>
-	</SlideMarkdown>
+	</Slide>
 
 	<Title />
 	<Love partner={['Svelte', 'Reveal.js']} />

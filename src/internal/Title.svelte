@@ -22,13 +22,13 @@
         {/await}
     </h2>
 
-		<Code lineNumbers trim noescape>
-    {
-    `const name = "hello world";
-    if(name === 'hello') {
-      console.log('world');
-    }
+		<Code lineNumbers trim noescape>{
     `
+const name = "hello world";
+if(name === 'hello') {
+  console.log('world');
+}
+    `.trim()
     }
 		</Code>
 </Slide>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	// Visivility
+	export let visibility: 'hidden' | 'uncounted' | undefined = undefined;
 	// Color Backgrounds
 	export let bgColor = '';
 
@@ -17,13 +19,23 @@
 	export let bgVideoMuted = '';
 	// Iframe Backgrounds
 	export let bgIframe = '';
-	export let bgInteractive: boolean|undefined = undefined;
+	export let bgInteractive: boolean | undefined = undefined;
 	// Transitions
+	export let transition: string | undefined = undefined;
+	export let transitionSpeed: string | undefined = undefined;
 
+	// Markdown Setting
+	export let markdown: boolean | string | undefined = undefined;
+	markdown = typeof markdown == 'boolean' ? '' : markdown;
 
+	export let seperator = '';
+	export let seperatorVertical = '';
+	export let seperatorNotes = '';
+	export let charset = '';
 </script>
 
 <section
+	data-visibility={visibility}
 	data-background-color={bgColor}
 	data-background-gradient={bgGradient}
 	data-background-image={bgImage}
@@ -36,6 +48,13 @@
 	data-background-video-muted={bgVideoMuted}
 	data-background-iframe={bgIframe}
 	data-background-interactive={bgInteractive}
+	data-markdown={markdown}
+	data-separator={seperator}
+	data-separator-vertical={seperatorVertical}
+	data-separator-notes={seperatorNotes}
+	data-charset={charset}
+	data-transition={transition}
+	data-transition-speed={transitionSpeed}
 >
 	<slot />
 </section>
