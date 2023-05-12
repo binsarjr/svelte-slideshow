@@ -17,8 +17,10 @@
 	export let bgVideoMuted = '';
 	// Iframe Backgrounds
 	export let bgIframe = '';
-	export let bgInteractive = false;
+	export let bgInteractive: boolean|undefined = undefined;
 	// Transitions
+
+
 </script>
 
 <section
