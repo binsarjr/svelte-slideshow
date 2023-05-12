@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type Reveal from 'reveal.js';
+	import { browser } from '$app/environment';
+	import { defaultRevealConfig } from '../store.js';
+	browser;
 
 	export let config: Reveal.Options | undefined = undefined;
 	export let height = '100%';
@@ -24,12 +27,12 @@
 	// wait if config is change
 	$: if (config && typeof window != 'undefined' && api) reInit();
 
-	const init = () => {
+	const init = async () => {
 		// if config is empty then config value have to be undefined
 		if (config) if (!Object.keys(config).length) config = undefined;
 
 		// @ts-ignore
-		api = new RevealJs(el, config);
+		api = new RevealJs(el, { ...$defaultRevealConfig, ...config });
 		api.initialize();
 	};
 	const reInit = () => {
