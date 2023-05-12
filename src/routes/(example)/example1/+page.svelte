@@ -15,7 +15,9 @@
 	import Presentation from '../../../lib/components/Presentation.svelte';
 	import { onMount } from 'svelte';
 	import Slide from '../../../lib/components/Slide.svelte';
+	import SlideMarkdown from '../../../lib/components/SlideMarkdown.svelte';
 	let config: Reveal.Options = {};
+	
 
 	onMount(async () => {
 		const Highlight = (await import('reveal.js/plugin/highlight/highlight')).default;
@@ -28,8 +30,10 @@
 		config = {
 			plugins: [Highlight, RevealNotes, Markdown, MathReveal],
 			hash: true,
+			embedded: true,
 			mathjax2: {
 				config: 'TeX-AMS_HTML-full',
+				// @ts-ignore
 				TeX: {
 					Macros: {
 						R: '\\mathbb{R}',
@@ -45,11 +49,22 @@
 	<Slide>
 		<p>Example 1</p>
 		<p>
-			Get from <a href="https://github.com/rajasegar/svelte-slides" target="_blank" rel="noreferrer"
+			Get from <a href="https://github.com/rajasegar/svelte" target="_blank" rel="noreferrer"
 				>rajasegar/svelte-slides</a
 			>
 		</p>
 	</Slide>
+	<SlideMarkdown>
+		<script type="text/template">
+## Slide 1
+A paragraph with some text and a [link](https://hakim.se).
+---
+## Slide 2
+---
+## Slide 3
+		</script>
+	</SlideMarkdown>
+
 	<Title />
 	<Love partner={['Svelte', 'Reveal.js']} />
 	<GettingStarted />
@@ -62,3 +77,10 @@
 	<Media />
 	<Transitions />
 </Presentation>
+
+<style>
+	:global(body) {
+		margin: 0;
+		padding: 0;
+	}
+</style>
