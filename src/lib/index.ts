@@ -4,5 +4,7 @@ import Presentation from './components/Presentation.svelte'
 import Slide from './components/Slide.svelte'
 import Youtube from './components/embed/Youtube.svelte'
 
+export * from './store.js'
+
 export { Code, Notes, Presentation, Slide, Youtube }
 
