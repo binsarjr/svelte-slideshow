@@ -14,15 +14,15 @@
 	let api: Reveal.Api;
 
 	// if in vite
-	try {
-		if (import.meta.hot) {
-			import.meta.hot.on('vite:afterUpdate', () => {
-				reInit();
-			});
-		}
-	} catch (error) {
-		console.warn(error, 'nevermind');
-	}
+	// try {
+	// 	if (import.meta.hot) {
+	// 		import.meta.hot.on('vite:afterUpdate', () => {
+	// 			reInit();
+	// 		});
+	// 	}
+	// } catch (error) {
+	// 	console.warn(error, 'nevermind');
+	// }
 
 	// wait if config is change
 	$: if (config && typeof window != 'undefined' && api) reInit();

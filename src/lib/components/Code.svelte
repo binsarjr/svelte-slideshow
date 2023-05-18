@@ -6,7 +6,7 @@
 	export let id: string | undefined = undefined;
 </script>
 
-<pre data-id={id}><code
+<pre data-id={id} {...$$restProps}><code
 		data-trim={trim}
 		data-noescape={noescape}
 		data-line-numbers={lineNumbers}
