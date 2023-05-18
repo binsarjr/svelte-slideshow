@@ -23,6 +23,9 @@
 	// Transitions
 	export let transition: string | undefined = undefined;
 	export let transitionSpeed: string | undefined = undefined;
+	// Animation
+	export let autoAnimation: boolean | undefined = undefined;
+	export let autoAnimationRestart: boolean | undefined = undefined;
 
 	// Markdown Setting
 	export let markdown: boolean | string | undefined = undefined;
@@ -55,6 +58,9 @@
 	data-charset={charset}
 	data-transition={transition}
 	data-transition-speed={transitionSpeed}
+	data-auto-animate={autoAnimation}
+	data-auto-animate-restart={autoAnimationRestart}
+	{...$$restProps}
 >
 	<slot />
 </section>
