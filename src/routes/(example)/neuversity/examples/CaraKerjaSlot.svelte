@@ -16,7 +16,7 @@
 		const RevealNotes = (await import('reveal.js/plugin/notes/notes')).default;
 
 		config = {
-			embedded: false,
+			embedded: true,
 			plugins: [Highlight, RevealNotes, Markdown],
 			hash: true
 		};
@@ -25,7 +25,6 @@
 		load();
 	}
 
-	let codeId = 'code-animation';
 </script>
 
 <Presentation {config}>
@@ -45,3 +44,10 @@
 		<p>Semoga Bermanfaat</p>
 	</Slide>
 </Presentation>
+
+<style>
+	:global(body) {
+		margin: 0;
+		padding: 0;
+	}
+</style>
