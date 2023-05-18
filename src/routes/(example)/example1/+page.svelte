@@ -16,7 +16,6 @@
 	import { onMount } from 'svelte';
 	import Slide from '../../../lib/components/Slide.svelte';
 	let config: Reveal.Options = {};
-	
 
 	onMount(async () => {
 		const Highlight = (await import('reveal.js/plugin/highlight/highlight')).default;
